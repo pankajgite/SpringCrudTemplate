@@ -1,6 +1,6 @@
 package com.crud.crud.controller;
 
-import com.crud.crud.entity.Employee;
+import com.crud.crud.dto.EmployeeDto;
 import com.crud.crud.service.EmployeeService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -21,27 +21,27 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
-        log.info("REST request to create Employee : {}", employee);
-        return new ResponseEntity<>(employeeService.createEmployee(employee), HttpStatus.CREATED);
+    public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto employeeDto) {
+        log.info("REST request to create Employee : {}", employeeDto);
+        return new ResponseEntity<>(employeeService.createEmployee(employeeDto), HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<Employee>> getAllEmployees() {
+    public ResponseEntity<List<EmployeeDto>> getAllEmployees() {
         log.info("REST request to get all Employees");
         return ResponseEntity.ok(employeeService.getAllEmployees());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
+    public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable Long id) {
         log.info("REST request to get Employee : {}", id);
         return ResponseEntity.ok(employeeService.getEmployeeById(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDto employeeDto) {
         log.info("REST request to update Employee : {}", id);
-        return ResponseEntity.ok(employeeService.updateEmployee(id, employee));
+        return ResponseEntity.ok(employeeService.updateEmployee(id, employeeDto));
     }
 
     @DeleteMapping("/{id}")
