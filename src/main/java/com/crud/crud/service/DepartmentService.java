@@ -1,12 +1,12 @@
 package com.crud.crud.service;
 
-import com.crud.crud.entity.Department;
+import com.crud.crud.dto.DepartmentDto;
 import java.util.List;
 
 public interface DepartmentService {
-    Department createDepartment(Department department);
-    List<Department> getAllDepartments();
-    Department getDepartmentById(Long id);
-    Department updateDepartment(Long id, Department department);
+    DepartmentDto createDepartment(DepartmentDto departmentDto);
+    List<DepartmentDto> getAllDepartments();
+    DepartmentDto getDepartmentById(Long id);
+    DepartmentDto updateDepartment(Long id, DepartmentDto departmentDto);
     void deleteDepartment(Long id);
 }

@@ -1,6 +1,6 @@
 package com.crud.crud.controller;
 
-import com.crud.crud.entity.Department;
+import com.crud.crud.dto.DepartmentDto;
 import com.crud.crud.service.DepartmentService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -21,27 +21,27 @@ public class DepartmentController {
     }
 
     @PostMapping
-    public ResponseEntity<Department> createDepartment(@RequestBody Department department) {
-        log.info("REST request to create Department : {}", department);
-        return new ResponseEntity<>(departmentService.createDepartment(department), HttpStatus.CREATED);
+    public ResponseEntity<DepartmentDto> createDepartment(@RequestBody DepartmentDto departmentDto) {
+        log.info("REST request to create Department : {}", departmentDto);
+        return new ResponseEntity<>(departmentService.createDepartment(departmentDto), HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<Department>> getAllDepartments() {
+    public ResponseEntity<List<DepartmentDto>> getAllDepartments() {
         log.info("REST request to get all Departments");
         return ResponseEntity.ok(departmentService.getAllDepartments());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Department> getDepartmentById(@PathVariable Long id) {
+    public ResponseEntity<DepartmentDto> getDepartmentById(@PathVariable Long id) {
         log.info("REST request to get Department : {}", id);
         return ResponseEntity.ok(departmentService.getDepartmentById(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Department> updateDepartment(@PathVariable Long id, @RequestBody Department department) {
+    public ResponseEntity<DepartmentDto> updateDepartment(@PathVariable Long id, @RequestBody DepartmentDto departmentDto) {
         log.info("REST request to update Department : {}", id);
-        return ResponseEntity.ok(departmentService.updateDepartment(id, department));
+        return ResponseEntity.ok(departmentService.updateDepartment(id, departmentDto));
     }
 
     @DeleteMapping("/{id}")

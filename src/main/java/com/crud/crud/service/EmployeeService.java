@@ -1,12 +1,12 @@
 package com.crud.crud.service;
 
-import com.crud.crud.entity.Employee;
+import com.crud.crud.dto.EmployeeDto;
 import java.util.List;
 
 public interface EmployeeService {
-    Employee createEmployee(Employee employee);
-    List<Employee> getAllEmployees();
-    Employee getEmployeeById(Long id);
-    Employee updateEmployee(Long id, Employee employee);
+    EmployeeDto createEmployee(EmployeeDto employeeDto);
+    List<EmployeeDto> getAllEmployees();
+    EmployeeDto getEmployeeById(Long id);
+    EmployeeDto updateEmployee(Long id, EmployeeDto employeeDto);
     void deleteEmployee(Long id);
 }
